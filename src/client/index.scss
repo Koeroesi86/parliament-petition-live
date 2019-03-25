@@ -1,0 +1,24 @@
+$FontPath: "../assets/fonts/fonts";
+$FontName: "Open-Sans";
+
+/*@import "../assets/fonts/fonts";*/
+/*@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $FontName, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  background: transparent url('../assets/bg.jpg') center center no-repeat;
+  background-size: cover;
+}
