@@ -1,33 +1,27 @@
 import React from "react";
-import { Route, StaticRouter, Switch } from "react-router";
+import { StaticRouter } from "react-router";
+import reactRouterToArray from 'react-router-to-array';
 import PropTypes from "prop-types";
-import { ROUTE_MAPPING } from "../configuration/constants";
+import Routes from "../components/routes";
 
 const mapLocalsToContext = locals => ({
   assets: locals.assets,
   title: locals.title,
 });
 
-function StaticRoutes(props) {
-  const context = mapLocalsToContext(props.locals);
+export const routeArray = reactRouterToArray(new Routes());
+
+const StaticRoutes = ({ locals }) => {
+  const context = mapLocalsToContext(locals);
   return (
     <StaticRouter
       context={context}
-      location={`${props.locals.path}`}
+      location={`${locals.path}`}
     >
-      <Switch>
-        {Object.getOwnPropertyNames(ROUTE_MAPPING).map(route => (
-          <Route
-            component={ROUTE_MAPPING[route]}
-            path={route}
-            exact={true}
-            key={route}
-          />
-        ))}
-      </Switch>
+      <Routes />
     </StaticRouter>
   );
-}
+};
 
 StaticRoutes.propTypes = {
   locals: PropTypes.shape({
